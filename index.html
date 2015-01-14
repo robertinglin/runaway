@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Runaway Test</title>
+        <link rel="stylesheet" type="text/css" href="./styles/css/main.css">
+        <link rel="stylesheet" type="text/css" href="./styles/css/slideshow.css">
+        <!-- <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
+        <link href="http://fonts.googleapis.com/css?family=Lato:400,100italic,100,300italic,300,400italic,700italic,700,900italic,900" rel="stylesheet" type="text/css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="#">Top</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#download">Download</a></li>
+            </ul>
+        </nav>
+        <header>
+            <img src="images/masthead.png" id="masthead" />
+            <div id="overlay">
+                <h1 id="logo">Runaway</h1>
+                <p> We have phones, tablets, phablets, watches, swatches, refrigerators, tvs, cars and even toasters connected to the internet thes days. The world doesn't just have 3 devices and we shouldn't be developing like it does!</p>
+                <p>
+                    Runaway is a different take on responsive design. Instead of lumping each device into a generic category, it lets them shine all on their own.
+                </p>
+            </div>
+        </header>
+        
+        <div id="about">
+            <a name="about"></a>
+            Boiled down Runaway is a set of wrapper, and helper mixins around a SASS mixin called <a href="http://viget.com/inspire/responsive-design-with-spread" target="_blank">spread</a>. Spread, created by Doug Avery, allows developers to input value ranges for properties and automatically turns them into a sequential set of media query breakpoints. Runaway adds structure to spread with a preconfigured set of functions that help translate the idea to the more known concept of mobile, tablet, and desktop breakpoints.  
+            <img src="images/ipad.png" id="ipad" />
+        </div>
+        <div id="testimonials">
+            <ul class="slideshow">
+                <li>
+                    <img src="images/testimonialAvatar.png" class="avatar" />
+                    <blockquote>Runaway changed my life!</blockquote>
+                    <p>-Totally Real Celebrity!</p>
+                </li>
+                <li>
+                    <img src="images/testimonialAvatar.png" class="avatar" />
+                    <blockquote>After using Runaway, I never had to runaway, from my designers again!</blockquote>
+                    <p>- Overworked Developer</p>
+                </li>
+                <li>
+                    <img src="images/testimonialAvatar.png" class="avatar" />
+                    <blockquote>And this!</blockquote>
+                    <p>- Anonymous</p>
+                </li>
+            </ul>
+            <ul class="slideshow-controls">
+                <li><a href="#">0</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+            </ul>
+        </div>
+        <div id="examples">
+            <a name="examples"></a>
+            <div class="info">
+            There are 4 different types of mixins, r ( reveal ),s ( spread ),i ( inbetween ) and min-max.
+            </div>
+            <div class="example">
+                Reveal helpers are single property sets for the configured base breakpoints. If you only want a property on the small breakpoint range you would use the r-small mixin. 
+                <pre>
+body {
+  /* The background color will change depending on the viewport */
+  @include r-small( background-color, #400 );
+  @include r-med( background-color, #040 );
+  @include r-large( background-color, #004 );
+}</pre>
+            </div>
+            <div class="example">
+                Spread helpers will spread the property values within the selected viewport.
+                <pre>
+body {
+  @include s-small( font-size, 30px, 12px );
+  @include s-med( font-size, 1em, 2em );
+  @include s-large( font-size, 10%, 30% );
+  /* Max works with any size above the predetermined maximum */
+  @include s-max( font-size, 30%, 50% ); 
+}
+                </pre>
+            </div>
+            <div class="example">
+                Inbetween helpers act like spread helpers except they spread values inbetween multiple viewports.
+                <pre>
+.floatingButton {
+  @include i-small-med( left, 0px, 40px );
+  /
+  @include i-small-large( left, 40px, 20px, out-quad );
+  @include i-small-max( left, 0px, 40px );
+
+  @include i-med-large( left, 0px, 40px );
+  @include i-med-max( left, 0px, 40px );
+
+  @include i-large-max( left, 0px, 40px );
+}</pre>
+            </div>
+            <div class="example">
+                Min and max helpers are similar to r helpers in that they are basic media queries based off of the configuration.
+                <pre>
+.randomBlockElement {
+  @include min-small( min-height, 300px );
+  @include max-small( min-height, 300px );
+
+  @include min-med( min-height, 300px );
+  @include max-med( min-height, 300px );
+
+  @include min-large( min-height, 300px );
+  @include max-large( min-height, 300px );
+
+  @include min-max( min-height, 300px );
+  @include max-max( min-height, 300px );
+}</pre>
+            </div>
+        </div>
+        <div id="download">
+            <a name="download"></a>
+            <img src="images/Github.png" />
+            <br/>
+            <a href="github.com" class="btn">Download</a>
+        </div>
+        <script type="text/javascript" src="slideshow.js"></script>
+    </body>
+</html>
